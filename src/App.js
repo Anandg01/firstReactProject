@@ -1,5 +1,5 @@
-import Expeseitem from "./Components/ExpenseItem";
-function App() {
+import Expenses from "./Components/Expenses/Expenses";
+ const App=()=> {
   const expenses = [
     { title: 'Food', amount: 890.9, date: new Date(2023, 9, 23), location: "delhi" },
     { title: 'Mobile', amount: 8990.9, date: new Date(2023, 11, 23), location: "blp" },
@@ -11,16 +11,7 @@ function App() {
   return (
     <div>
       <h2>Let's get started!</h2>
-
-      {expenses.map(expense => {
-        return <Expeseitem
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-          location={expense.location}
-        ></Expeseitem>
-      })}
-
+      <Expenses items={expenses} ></Expenses>
     </div>
   );
 }
