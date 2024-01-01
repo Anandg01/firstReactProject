@@ -1,0 +1,16 @@
+.new-expense {
+    background: #a893ee;
+    padding: 1rem;
+    width: 50rem;
+    max-width: 95%;
+    border-radius: 12px;
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.addExpense-controls {
+  display: flex;
+}
+
+
+
