@@ -1,10 +1,16 @@
 import ExpenseForm from "./ExpensesForm";
 import './AddExpense.css'
-const NewExpenes=()=>{
+const NewExpenes=(props)=>{
+    
+    const saveExpenseDate=(data)=>{
+        console.log('its reder from add expenses');
+      console.log('hit',data)
+      props.onAddExpense(data)
+    }
 
     return (
         <div className="new-expense">
-            <ExpenseForm />
+            <ExpenseForm onsaveExpense={saveExpenseDate}/>
         </div>
     )
 

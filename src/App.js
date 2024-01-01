@@ -9,10 +9,14 @@ import AddExpenses from './Components/AddExpense/AddExpenses';
     { title: 'Keybord', amount: 890.9, date: new Date(2023, 10, 25), location: "pnb" },
   ]
 
+  const expenseHandler=(expense)=>{
+    console.log('app', expense)
+  }
+
   return (
     <div>
       <h2>Let's get started!</h2>
-      <AddExpenses />
+      <AddExpenses onAddExpense={expenseHandler} />
       <Expenses items={expenses} ></Expenses>
     </div>
   );
