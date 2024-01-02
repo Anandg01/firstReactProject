@@ -1,7 +1,6 @@
 
 const ExpenseFilter = (props) => {
     const optionChangeHandler = (e) => {
-        console.log(e.target);
         props.onChanged(e.target.value);
     }
     return (
