@@ -5,7 +5,11 @@ const NewExpenes=(props)=>{
     const saveExpenseDate=(data)=>{
         console.log('its reder from add expenses');
       console.log('hit',data)
-      props.onAddExpense(data)
+      const expense={
+        ...data,
+        id:Math.random().toString()
+      }
+      props.onAddExpense(expense)
     }
 
     return (
