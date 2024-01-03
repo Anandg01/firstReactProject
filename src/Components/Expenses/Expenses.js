@@ -7,33 +7,51 @@ import Card from '../UI/Card';
 function Expenses(probs) {
 
   const [filteredYear, setFilteredYear] = useState('2024');
-  const [expenses, setExpenses]=useState(probs.items);
-  
+
   const filderedChangedHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
     console.log(selectedYear, 'expesnes')
-
-    console.log(probs.items)
-
-    setExpenses(probs.items.filter((expense)=>{
-      return expense.date.getFullYear()===Number(selectedYear)
-    }))
   }
-  console.log(probs)
+
+  const filteredExpense = probs.items.filter((expense) => {
+    return expense.date.getFullYear() === Number(filteredYear)
+  })
+
+
+  let expensesContent = <p>No Expense find</p>;
+
+  if (filteredExpense.length === 1) {
+    expensesContent = filteredExpense.map(expense => {
+      return <> <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+        location={expense.location}
+      ></ExpenseItem>
+      <p>Add more Expenses</p>
+      </>
+    })
+  }
+
+  else if(filteredExpense.length>0) {
+    expensesContent = filteredExpense.map(expense => {
+      return <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+        location={expense.location}
+      ></ExpenseItem>
+    })
+  }
+
   return (
     <Card className='expenses'>
       <ExpeseFilter selected={filteredYear} onChanged={filderedChangedHandler} />
 
-      {expenses.map(expense => {
-        return <ExpenseItem
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-          location={expense.location}
-        ></ExpenseItem>
+      {expensesContent}
 
-      })}
     </Card>
   )
 }
